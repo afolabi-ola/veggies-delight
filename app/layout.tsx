@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Veggies Delight',
+  title: 'Food Around You',
   description: 'You are what you eat, so eat fresh',
 };
 

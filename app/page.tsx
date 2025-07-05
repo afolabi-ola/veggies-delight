@@ -1,14 +1,25 @@
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
 import Logo from '@/app/_components/Logo';
+import { useRouter } from 'next/navigation';
+import { products } from './_lib/products';
+import { ProductCard } from './_components/ProductCard';
+import Link from 'next/link';
 
 export default function Page() {
+  const { push } = useRouter();
+
   return (
     <main className='min-h-screen bg-gray-50'>
       {/* Hero Section */}
       <section className='bg-green-700 text-white pt-10 pb-20 px-6 text-center'>
         <nav className='lg:px-20 mb-20 flex justify-between items-center'>
           <Logo />
-          <button className='px-2 py-1 rounded-2xl h-full md:inline-block lg:inline-block bg-white text-green-700 font-semibold md:px-6 md:py-3 md:rounded-full lg:px-6 lg:py-3 lg:rounded-full shadow transition duration-500 lg:w-3xs md:w-3xs hover:bg-green-400 hover:text-white'>
+          <button
+            onClick={() => push('/login')}
+            className='px-2 py-1 rounded-2xl h-full md:inline-block lg:inline-block bg-white text-green-700 font-semibold md:px-6 md:py-3 md:rounded-full lg:px-6 lg:py-3 lg:rounded-full shadow transition duration-500 lg:w-3xs md:w-3xs hover:bg-green-400 hover:text-white cursor-pointer'
+          >
             Log in
           </button>
         </nav>
@@ -21,12 +32,12 @@ export default function Page() {
               Fresh farm produce delivered straight to your doorstep. Healthy,
               organic, and affordable.
             </p>
-            <a
+            <Link
               href='#products'
               className='inline-block bg-white text-green-700 font-semibold px-6 py-3 rounded-full shadow transition duration-500 w-3xs hover:bg-green-400 hover:text-white'
             >
               Shop Now
-            </a>
+            </Link>
           </div>
           <div className='border relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] mx-auto lg:ml-0 lg:mr-0 rounded-full overflow-hidden'>
             <Image
@@ -43,10 +54,10 @@ export default function Page() {
       <section className='py-16 px-6 max-w-7xl mx-auto text-center'>
         <h2 className='text-3xl font-semibold mb-6 text-green-800'>About Us</h2>
         <p className='text-gray-700 max-w-3xl mx-auto leading-relaxed'>
-          We believe in bringing the freshest farm produce directly from local
-          farmers to you. No middlemen, no delays — just pure, wholesome food.
+          We offer fresh farm produce directly to your doorstep in real time. No
+          middlemen, no delays, all at your convinience.
         </p>
-        <div className='mt-5 flex flex-col gap-6 lg:flex lg:justify-around w-full'>
+        <div className='mt-5 flex flex-col gap-6 lg:flex lg:flex-row lg:justify-around w-full'>
           <div>
             <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[600px] md:h-[400px] lg:w-[400px] lg:h-[300px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
               <Image
@@ -90,11 +101,11 @@ export default function Page() {
         <h2 className='text-3xl font-semibold mb-10 text-green-800'>
           How It Works
         </h2>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 max-w-4xl mx-auto'>
           <div className='flex flex-col items-center'>
             <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[250px] lg:h-[150px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
               <Image
-                src={'/images/grainsack.jpeg'}
+                src={'/images/personsittingordering.webp'}
                 alt=''
                 fill
                 objectFit='cover'
@@ -110,7 +121,7 @@ export default function Page() {
           <div className='flex flex-col items-center'>
             <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[250px] lg:h-[150px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
               <Image
-                src={'/images/grainsack.jpeg'}
+                src={'/images/fullorderfufill.gif'}
                 alt=''
                 fill
                 objectFit='cover'
@@ -126,7 +137,7 @@ export default function Page() {
           <div className='flex flex-col items-center'>
             <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[250px] lg:h-[150px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
               <Image
-                src={'/images/grainsack.jpeg'}
+                src={'/images/delivery.gif'}
                 alt=''
                 fill
                 objectFit='cover'
@@ -143,12 +154,12 @@ export default function Page() {
       </section>
 
       {/* Products Preview Section */}
-      {/* <section id='products' className='py-16 px-6 max-w-6xl mx-auto'>
+      <section id='products' className='py-16 px-6 max-w-6xl mx-auto'>
         <h2 className='text-3xl font-semibold mb-8 text-green-800 text-center'>
           Fresh Produce
         </h2>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
-          {products.map((product) => (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
+          {products.slice(0, 4).map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}
@@ -159,11 +170,11 @@ export default function Page() {
             />
           ))}
         </div>
-      </section> */}
+      </section>
 
       {/* Footer */}
       <footer className='bg-green-700 text-white py-6 text-center'>
-        <p>© 2025 Fresh Farm Produce. All rights reserved.</p>
+        <p>© 2025 Food Around You. All rights reserved.</p>
       </footer>
     </main>
   );
