@@ -1,28 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import Logo from '@/app/_components/Logo';
-import { useRouter } from 'next/navigation';
 import { products } from './_lib/products';
 import { ProductCard } from './_components/ProductCard';
 import Link from 'next/link';
 
 export default function Page() {
-  const { push } = useRouter();
-
   return (
-    <main className='min-h-screen bg-gray-50'>
+    <>
       {/* Hero Section */}
       <section className='bg-green-700 text-white pt-10 pb-20 px-6 text-center'>
-        <nav className='lg:px-20 mb-20 flex justify-between items-center'>
-          <Logo />
-          <button
-            onClick={() => push('/login')}
-            className='px-2 py-1 rounded-2xl h-full md:inline-block lg:inline-block bg-white text-green-700 font-semibold md:px-6 md:py-3 md:rounded-full lg:px-6 lg:py-3 lg:rounded-full shadow transition duration-500 lg:w-3xs md:w-3xs hover:bg-green-400 hover:text-white cursor-pointer'
-          >
-            Log in
-          </button>
-        </nav>
         <div className='items-center w-full flex flex-col-reverse gap-4 md:flex-row lg:flex-row md:justify-around lg:justify-around'>
           <div className='md:w-lg'>
             <h1 className='text-4xl md:text-5xl font-bold max-w-4xl lg:mx-auto mb-4'>
@@ -33,7 +20,7 @@ export default function Page() {
               organic, and affordable.
             </p>
             <Link
-              href='#products'
+              href='/products'
               className='inline-block bg-white text-green-700 font-semibold px-6 py-3 rounded-full shadow transition duration-500 w-3xs hover:bg-green-400 hover:text-white'
             >
               Shop Now
@@ -172,10 +159,19 @@ export default function Page() {
         </div>
       </section>
 
+      <div className='text-center'>
+        <Link
+          href='/products'
+          className='inline-block bg-green-700 text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-green-800 transition'
+        >
+          View All Products
+        </Link>
+      </div>
+
       {/* Footer */}
-      <footer className='bg-green-700 text-white py-6 text-center'>
+      <footer className='bg-green-700 text-white py-6 text-center mt-5'>
         <p>© 2025 Food Around You. All rights reserved.</p>
       </footer>
-    </main>
+    </>
   );
 }
