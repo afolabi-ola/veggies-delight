@@ -15,7 +15,7 @@ export default function ProductDetails() {
   /* mock vendor for now */
   const vendor = {
     name: 'Green Farm Ltd.',
-    avatar: '/images/vendor.png',
+    avatar: '/images/vendor.jpeg',
     phone: '+234 800-123-4567',
   };
 
