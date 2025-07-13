@@ -15,13 +15,13 @@ export default function ProductDetails() {
   /* mock vendor for now */
   const vendor = {
     name: 'Green Farm Ltd.',
-    avatar: '/images/vendor.png',
+    avatar: '/images/vendor.jpeg',
     phone: '+234 800-123-4567',
   };
 
   return (
     <main className='min-h-screen bg-gray-50 py-10 px-6'>
-      <div className='max-w-4xl mx-auto bg-white shadow rounded-xl p-6'>
+      <div className='max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-6'>
         <div className='grid md:grid-cols-2 gap-6'>
           <div className='relative w-full h-64 md:h-96 rounded-xl overflow-hidden'>
             <Image

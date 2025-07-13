@@ -32,11 +32,11 @@ export function ProductCard({
   };
 
   return (
-    <div
-      className='bg-white rounded-2xl shadow-md p-4 transition hover:shadow-lg group cursor-pointer'
-      onClick={() => setIsOverLayed(!isOverLayed)}
-    >
-      <div className='w-full h-[300px] relative overflow-hidden rounded-2xl'>
+    <div className='bg-white rounded-2xl shadow-md p-4 transition hover:shadow-lg group cursor-pointer'>
+      <div
+        className='w-full h-[300px] relative overflow-hidden rounded-2xl'
+        onClick={() => setIsOverLayed(!isOverLayed)}
+      >
         <Image
           src={image}
           alt={name}

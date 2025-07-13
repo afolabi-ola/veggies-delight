@@ -4,8 +4,11 @@ import Image from 'next/image';
 import { products } from './_lib/products';
 import { ProductCard } from './_components/ProductCard';
 import Link from 'next/link';
+import { useCart } from './_context/CartContext';
 
 export default function Page() {
+  const { addToCart } = useCart();
+
   return (
     <>
       {/* Hero Section */}
@@ -153,7 +156,7 @@ export default function Page() {
               name={product.name}
               price={product.price}
               image={product.image}
-              onAddToCart={() => alert('Add to cart - demo only')}
+              onAddToCart={() => addToCart(product)}
             />
           ))}
         </div>

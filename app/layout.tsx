@@ -4,6 +4,8 @@ import './globals.css';
 
 import Navbar from './_components/Navbar';
 import { CartProvider } from './_context/CartContext';
+import { CartSidebar } from './_components/CartSidebar';
+import AppToaster from './_components/AppToaster';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,7 +34,11 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Navbar />
-          <main className='min-h-screen bg-gray-50'>{children}</main>
+          <main className='min-h-screen bg-gray-50'>
+            {children}
+            <CartSidebar />
+            <AppToaster />
+          </main>
         </body>
       </CartProvider>
     </html>
