@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className='lg:px-20 border-b-background flex justify-between items-center border py-2 bg-primary'>
+    <nav className='lg:px-20 border-b-background flex justify-between items-center border bg-primary py-2 px-5'>
       <Logo />
       {!session ? (
         pathname !== '/login' && (

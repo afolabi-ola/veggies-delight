@@ -1,17 +1,19 @@
 // app/products/[id]/page.tsx
 'use client';
 
-import { useParams, notFound } from 'next/navigation';
+import { useParams, notFound, useRouter } from 'next/navigation';
 import { products } from '@/app/_lib/products';
 import { useCart } from '@/app/_context/CartContext';
 import Image from 'next/image';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { IoCartOutline } from 'react-icons/io5';
+import Button from '@/app/_components/Button';
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const product = products.find((p) => p.id === id);
   const { addToCart } = useCart();
+  const { back } = useRouter();
 
   if (!product) return notFound();
 
@@ -23,6 +25,11 @@ export default function ProductDetails() {
 
   return (
     <main className='min-h-screen bg-gray-50 py-10 px-4 sm:px-6'>
+      <div className='w-full flex justify-end'>
+        <Button width='w-full sm:w-auto mb-2' onClick={back}>
+          &larr; Back
+        </Button>
+      </div>
       <div className='max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl p-6 md:p-10'>
         <div className='grid md:grid-cols-2 gap-8'>
           {/* Product Image */}

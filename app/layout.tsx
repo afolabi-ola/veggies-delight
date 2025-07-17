@@ -21,6 +21,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Food Around You',
   description: 'You are what you eat, so eat fresh',
+  icons: {
+    icon: '/images/logo3.png',
+    apple: '/images/logo3.png',
+  },
 };
 
 export default function RootLayout({
