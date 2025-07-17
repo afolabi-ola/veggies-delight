@@ -3,8 +3,8 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
-import Image from 'next/image';
 import { useState } from 'react';
+import Logo from '../_components/Logo';
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -28,13 +28,14 @@ export default function LoginPage() {
   return (
     <main className='min-h-screen flex flex-col justify-center items-center bg-gray-50 p-6'>
       <div className='max-w-md w-full bg-white p-8 rounded-2xl shadow-xl text-center'>
-        <Image
+        {/* <Image
           src='/images/logo.png'
           alt='Logo'
           width={60}
           height={60}
           className='mx-auto mb-4'
-        />
+        /> */}
+        <Logo />
         <h1 className='text-2xl font-bold mb-2 text-green-700'>Welcome Back</h1>
         <p className='mb-4 text-sm text-gray-600'>
           Sign in to continue shopping
