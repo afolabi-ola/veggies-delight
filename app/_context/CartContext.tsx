@@ -1,6 +1,7 @@
 // context/CartContext.tsx
 'use client';
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 interface CartItem {
   id: string;
@@ -34,7 +35,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [cartItems]);
 
   function addToCart(item: CartItem) {
-    setCartItems((prev) => [...prev, item]);
+    const hasItem = new Set(cartItems.map((i) => i.id)).has(item.id);
+    if (hasItem) {
+      toast.success('Item already in cart');
+      return;
+    }
+    setCartItems((prev) => (hasItem ? [...prev] : [...prev, item]));
   }
 
   function removeFromCart(id: string) {

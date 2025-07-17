@@ -2,14 +2,26 @@
 
 import { useCart } from '@/app/_context/CartContext';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { IoCartOutline } from 'react-icons/io5';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export function CartSidebar() {
   const { cartItems, removeFromCart, clearCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [mounted, setMounted] = useState(false); // NEW
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const cartCount = mounted ? cartItems.length : 0; // avoid mismatch
+
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
 
@@ -31,7 +43,7 @@ export function CartSidebar() {
       toast.error('Please fill in order form');
       return;
     }
-    // For now, just alert the order details
+
     toast.success(
       `Order placed!\nName: ${form.name}\nAddress: ${form.address}\nPhone: ${
         form.phone
@@ -41,6 +53,20 @@ export function CartSidebar() {
     setIsCheckingOut(false);
     setIsOpen(false);
     setForm({ name: '', address: '', phone: '' });
+  }
+
+  const handleCheckout = () => {
+    if (!session) {
+      // Redirect to login page if user is not signed in
+      router.push('/login');
+      setIsOpen(false);
+      return;
+    }
+    setIsCheckingOut(true);
+  };
+
+  if (!mounted) {
+    return null; // Avoid rendering before client hydration
   }
 
   return (
@@ -53,9 +79,9 @@ export function CartSidebar() {
       >
         <div className='relative bg-white px-3 py-3 rounded-full shadow-lg flex items-center gap-2'>
           <IoCartOutline className='text-xl text-secondary' />
-          {cartItems.length > 0 && (
+          {cartCount > 0 && (
             <span className='absolute -top-2 -right-2 bg-secondary text-white text-xs w-5 h-5 rounded-full flex items-center justify-center'>
-              {cartItems.length}
+              {cartCount}
             </span>
           )}
         </div>
@@ -173,10 +199,15 @@ export function CartSidebar() {
               Total: ₦{totalPrice.toLocaleString()}
             </p>
             <button
-              onClick={() => setIsCheckingOut(true)}
+              onClick={handleCheckout}
               className='w-full bg-green-700 hover:bg-green-800 text-white py-2 rounded mb-2'
+              disabled={status === 'loading'}
             >
-              Proceed to Checkout
+              {status === 'loading'
+                ? 'Checking...'
+                : !session
+                ? 'Sign in to Checkout'
+                : 'Proceed to Checkout'}
             </button>
             <button
               onClick={clearCart}
@@ -192,7 +223,6 @@ export function CartSidebar() {
             <button
               onClick={handlePlaceOrder}
               className='w-full bg-secondary hover:bg-secondary-hover text-white py-2 rounded'
-              //   disabled={!form.name || !form.address || !form.phone}
             >
               Place Order
             </button>

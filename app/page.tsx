@@ -15,8 +15,11 @@ export default function Page() {
       <section className='bg-green-700 text-white pt-10 pb-20 px-6 text-center'>
         <div className='items-center w-full flex flex-col-reverse gap-4 md:flex-row lg:flex-row md:justify-around lg:justify-around'>
           <div className='md:w-lg'>
-            <h1 className='text-4xl md:text-5xl font-bold max-w-4xl lg:mx-auto mb-4'>
+            {/* <h1 className='text-4xl md:text-5xl font-bold max-w-4xl lg:mx-auto mb-4'>
               You Are What You Eat
+            </h1> */}
+            <h1 className='text-4xl md:text-5xl font-bold max-w-4xl lg:mx-auto mb-4'>
+              Fresh farm produce delivered to your door step in real-time
             </h1>
             <p className='text-lg md:text-xl max-w-2xl mx-auto mb-8'>
               Fresh farm produce delivered straight to your doorstep. Healthy,
@@ -57,7 +60,7 @@ export default function Page() {
                 className='object-cover'
               />
             </div>
-            <h1 className='text-2xl md:mt-4'>Fresh</h1>
+            {/* <h1 className='text-2xl md:mt-4'>Fresh</h1> */}
           </div>
 
           <div>
@@ -69,7 +72,7 @@ export default function Page() {
                 className='object-cover'
               />
             </div>
-            <h1 className='text-2xl md:mt-4'>Quick</h1>
+            {/* <h1 className='text-2xl md:mt-4'>Quick</h1> */}
           </div>
 
           <div>
@@ -81,7 +84,7 @@ export default function Page() {
                 className='object-cover'
               />
             </div>
-            <h1 className='text-2xl md:mt-4'>Affordable</h1>
+            {/* <h1 className='text-2xl md:mt-4'>Affordable</h1> */}
           </div>
         </div>
       </section>
@@ -101,11 +104,11 @@ export default function Page() {
                 objectFit='cover'
               />
             </div>
-            <h3 className='font-semibold mb-2 text-green-700'>
+            {/* <h3 className='font-semibold mb-2 text-green-700'>
               1. Browse Produce
-            </h3>
-            <p className='text-gray-600'>
-              Choose from a variety of fresh fruits and vegetables.
+            </h3> */}
+            <p className='text-gray-600 text-sm mt-2'>
+              CHOOSE FROM A VARIETY OF FRESH FARM PRODUCE.
             </p>
           </div>
           <div className='flex flex-col items-center'>
@@ -117,11 +120,12 @@ export default function Page() {
                 objectFit='cover'
               />
             </div>
-            <h3 className='font-semibold mb-2 text-green-700'>
+            {/* <h3 className='font-semibold mb-2 text-green-700'>
               2. Place Order
-            </h3>
-            <p className='text-gray-600'>
-              Add items to your cart and place your order quickly and securely.
+            </h3> */}
+            <p className='text-gray-600 text-sm mt-2'>
+              PLACE ORDER BY TAPPING YELLOW ICON TO SEE EXACT LOCATION OF MOBILE
+              VENDOR IN REAL-TIME.
             </p>
           </div>
           <div className='flex flex-col items-center'>
@@ -133,11 +137,12 @@ export default function Page() {
                 objectFit='cover'
               />
             </div>
-            <h3 className='font-semibold mb-2 text-green-700'>
+            {/* <h3 className='font-semibold mb-2 text-green-700'>
               3. Delivered to You
-            </h3>
-            <p className='text-gray-600'>
-              We deliver straight to your door, fresh and on time.
+            </h3> */}
+            <p className='text-gray-600 text-sm mt-2'>
+              CHAT WITH MOBILE VENDOR AND HAVE FOOD ITEM DELIVERED TO YOU IN
+              MINUTES.
             </p>
           </div>
         </div>

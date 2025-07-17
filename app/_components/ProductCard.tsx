@@ -79,14 +79,14 @@ export function ProductCard({
         </p>
       </div>
 
-      <div className='mt-3 flex items-end gap-2'>
+      <div className='mt-3 flex flex-col items-end gap-2'>
         <div className='border border-gray-300 flex'>
           <input
             type='text'
             name='quantity'
             id='quantity'
             aria-label='quantity'
-            className='w-14 flex-1 h-10 max-h-10 px-2 outline-0'
+            className='w-full flex-1 h-10 max-h-10 px-2 outline-0'
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
           />
@@ -105,12 +105,15 @@ export function ProductCard({
             </button>
           </span>
         </div>
-        <button
+        {/* <button
           onClick={onAddToCart}
           className='w-full flex-1 mt-3 h-12 max-h-10 bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition cursor-pointer duration-300'
         >
           Add to Cart
-        </button>
+        </button> */}
+        <span className='text-center text-xs text-gray-400'>
+          TAP TO SEE LOCATION OF MOBILE VENDOR IN REAL-TIME
+        </span>
       </div>
       {/* <div className='flex justify-between gap-4'>
         <p className='text-green-600 font-bold text-sm'>
