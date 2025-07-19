@@ -24,7 +24,7 @@ export default function Page() {
   const displaySize = isFullyDisplayed ? products.length : 12;
 
   const productDisplay = products.filter((product) =>
-    product.name.toLowerCase().includes(userSearch.toLowerCase()),
+    product.name.toLowerCase().includes(userSearch.toLowerCase().trim()),
   );
 
   const container = {
