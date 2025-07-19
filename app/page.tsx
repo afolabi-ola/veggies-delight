@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section Adding comment to trigger redeploy*/}
       <section className='bg-green-700 text-white pt-10 pb-20 px-6 text-center'>
         <div className='items-center w-full flex flex-col-reverse gap-4 md:flex-row lg:flex-row md:justify-around lg:justify-around'>
           <motion.div
