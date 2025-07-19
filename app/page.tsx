@@ -6,6 +6,7 @@ import { ProductCard } from './_components/ProductCard';
 import Link from 'next/link';
 import { useCart } from './_context/CartContext';
 import { motion } from 'framer-motion';
+import HowItWorks from './_components/HowItWorks';
 
 export default function Page() {
   const { addToCart } = useCart();
@@ -58,12 +59,32 @@ export default function Page() {
 
       {/* About Section */}
       <section className='py-16 px-6 max-w-7xl mx-auto text-center'>
-        <h2 className='text-3xl font-semibold mb-6 text-green-800'>About Us</h2>
-        <p className='text-gray-700 max-w-3xl mx-auto leading-relaxed'>
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className='text-3xl font-semibold mb-6 text-green-800'
+        >
+          About Us
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className='text-gray-700 max-w-3xl mx-auto leading-relaxed'
+        >
           We offer fresh farm produce directly to your doorstep in real time. No
           middlemen, no delays, all at your convinience.
-        </p>
-        <div className='mt-5 flex flex-col gap-6 lg:flex lg:flex-row lg:justify-around w-full'>
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className='mt-5 flex flex-col gap-6 lg:flex lg:flex-row lg:justify-around w-full'
+        >
           <div>
             <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[600px] md:h-[400px] lg:w-[400px] lg:h-[300px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
               <Image
@@ -99,70 +120,19 @@ export default function Page() {
             </div>
             {/* <h1 className='text-2xl md:mt-4'>Affordable</h1> */}
           </div>
-        </div>
+        </motion.div>
       </section>
-
-      {/* How It Works Section */}
-      <section className='bg-white py-16 px-6 max-w-5xl mx-auto text-center'>
-        <h2 className='text-3xl font-semibold mb-10 text-green-800'>
-          How It Works
-        </h2>
-        <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 max-w-4xl mx-auto'>
-          <div className='flex flex-col items-center'>
-            <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[250px] lg:h-[150px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
-              <Image
-                src={'/images/personsittingordering.webp'}
-                alt=''
-                fill
-                objectFit='cover'
-              />
-            </div>
-            {/* <h3 className='font-semibold mb-2 text-green-700'>
-              1. Browse Produce
-            </h3> */}
-            <p className='text-gray-600 text-sm mt-2'>
-              CHOOSE FROM A VARIETY OF FRESH FARM PRODUCE.
-            </p>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[250px] lg:h-[150px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
-              <Image
-                src={'/images/fullorderfufill.gif'}
-                alt=''
-                fill
-                objectFit='cover'
-              />
-            </div>
-            {/* <h3 className='font-semibold mb-2 text-green-700'>
-              2. Place Order
-            </h3> */}
-            <p className='text-gray-600 text-sm mt-2'>
-              PLACE ORDER BY TAPPING YELLOW ICON TO SEE EXACT LOCATION OF MOBILE
-              VENDOR IN REAL-TIME.
-            </p>
-          </div>
-          <div className='flex flex-col items-center'>
-            <div className='border border-gray-500 relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[250px] lg:h-[150px] mx-auto lg:ml-0 lg:mr-0 rounded overflow-hidden'>
-              <Image
-                src={'/images/delivery.gif'}
-                alt=''
-                fill
-                objectFit='cover'
-              />
-            </div>
-            {/* <h3 className='font-semibold mb-2 text-green-700'>
-              3. Delivered to You
-            </h3> */}
-            <p className='text-gray-600 text-sm mt-2'>
-              CHAT WITH MOBILE VENDOR AND HAVE FOOD ITEM DELIVERED TO YOU IN
-              MINUTES.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      {/* How it works */}
+      <HowItWorks />
       {/* Products Preview Section */}
-      <section id='products' className='py-16 px-6 max-w-6xl mx-auto'>
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        id='products'
+        className='py-16 px-6 max-w-6xl mx-auto'
+      >
         <h2 className='text-3xl font-semibold mb-8 text-green-800 text-center'>
           Fresh Produce
         </h2>
@@ -178,21 +148,33 @@ export default function Page() {
             />
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <div className='text-center'>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        className='text-center'
+      >
         <Link
           href='/products'
           className='inline-block bg-green-700 text-white font-semibold px-6 py-3 rounded-full shadow hover:bg-green-800 transition'
         >
           View All Products
         </Link>
-      </div>
+      </motion.div>
 
       {/* Footer */}
-      <footer className='bg-green-700 text-white py-6 text-center mt-5'>
+      <motion.footer
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        className='bg-green-700 text-white py-6 text-center mt-5'
+      >
         <p>© 2025 Food Around You. All rights reserved.</p>
-      </footer>
+      </motion.footer>
     </>
   );
 }

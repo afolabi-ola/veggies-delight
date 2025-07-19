@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { IoCartOutline } from 'react-icons/io5';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export function CartSidebar() {
   const { cartItems, removeFromCart, clearCart } = useCart();
@@ -198,7 +199,13 @@ export function CartSidebar() {
             <p className='font-semibold text-green-800 mb-3'>
               Total: ₦{totalPrice.toLocaleString()}
             </p>
-            <button
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: '0px 8px 15px rgba(0,0,0,0.1)',
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               onClick={handleCheckout}
               className='w-full bg-green-700 hover:bg-green-800 text-white py-2 rounded mb-2'
               disabled={status === 'loading'}
@@ -208,24 +215,36 @@ export function CartSidebar() {
                 : !session
                 ? 'Sign in to Checkout'
                 : 'Proceed to Checkout'}
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: '0px 8px 15px rgba(0,0,0,0.1)',
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               onClick={clearCart}
               className='w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded'
             >
               Clear Cart
-            </button>
+            </motion.button>
           </footer>
         )}
 
         {isCheckingOut && (
           <footer className='p-4 border-t'>
-            <button
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: '0px 8px 15px rgba(0,0,0,0.1)',
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               onClick={handlePlaceOrder}
               className='w-full bg-secondary hover:bg-secondary-hover text-white py-2 rounded'
             >
               Place Order
-            </button>
+            </motion.button>
           </footer>
         )}
       </aside>

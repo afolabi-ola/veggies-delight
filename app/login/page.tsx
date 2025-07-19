@@ -5,6 +5,7 @@
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -27,7 +28,12 @@ export default function LoginPage() {
 
   return (
     <main className='min-h-screen flex flex-col justify-center items-center bg-gray-50 p-6'>
-      <div className='max-w-md w-full bg-white p-8 rounded-2xl shadow-xl text-center'>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className='max-w-md w-full bg-white p-8 rounded-2xl shadow-xl text-center'
+      >
         <Image
           src='/images/logo3.png'
           alt='Logo'
@@ -59,7 +65,7 @@ export default function LoginPage() {
             If this takes too long, check your internet or try again.
           </p>
         )}
-      </div>
+      </motion.div>
     </main>
   );
 }
