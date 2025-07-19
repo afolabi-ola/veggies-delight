@@ -19,13 +19,44 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Food Around You',
-  description: 'You are what you eat, so eat fresh',
+  title: {
+    default: 'Food Around You | Fresh Farm Produce',
+    template: '%s | Food Around You',
+  },
+  description:
+    'Buy fresh farm produce delivered to your doorstep in real-time.',
+  keywords: ['fresh food', 'vegetables', 'organic', 'farm produce'],
+  authors: [{ name: 'Food Around You' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_NG',
+    url: 'https://foodaroundyou.vercel.app',
+    title: 'Food Around You | Fresh Farm Produce',
+    description:
+      'Buy fresh farm produce delivered to your doorstep in real-time.',
+    siteName: 'Food Around You',
+    images: [
+      {
+        url: '/images/logo3.png',
+        width: 800,
+        height: 600,
+        alt: 'Food Around You Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Food Around You | Fresh Farm Produce',
+    description: 'Healthy, organic farm produce delivered to you.',
+    images: ['/images/logo3.png'],
+    creator: '@afolabi_qu73144',
+  },
   icons: {
     icon: '/images/logo3.png',
     apple: '/images/logo3.png',
   },
 };
+
 
 export default function RootLayout({
   children,
