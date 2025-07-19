@@ -3,6 +3,7 @@ import Logo from './Logo';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const { push } = useRouter();
@@ -10,7 +11,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className='lg:px-20 border-b-background flex justify-between items-center border bg-primary py-2 px-5'>
+    <motion.nav className='lg:px-20 border-b-background flex justify-between items-center border bg-primary py-2 px-5'>
       <Logo />
       {!session ? (
         pathname !== '/login' && (
@@ -31,6 +32,6 @@ export default function Navbar() {
           className=' rounded-full cursor-pointer'
         />
       )}
-    </nav>
+    </motion.nav>
   );
 }

@@ -5,6 +5,7 @@ import { products } from './_lib/products';
 import { ProductCard } from './_components/ProductCard';
 import Link from 'next/link';
 import { useCart } from './_context/CartContext';
+import { motion } from 'framer-motion';
 
 export default function Page() {
   const { addToCart } = useCart();
@@ -14,7 +15,13 @@ export default function Page() {
       {/* Hero Section */}
       <section className='bg-green-700 text-white pt-10 pb-20 px-6 text-center'>
         <div className='items-center w-full flex flex-col-reverse gap-4 md:flex-row lg:flex-row md:justify-around lg:justify-around'>
-          <div className='md:w-lg'>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true }}
+            className='md:w-lg'
+          >
             {/* <h1 className='text-4xl md:text-5xl font-bold max-w-4xl lg:mx-auto mb-4'>
               You Are What You Eat
             </h1> */}
@@ -31,15 +38,21 @@ export default function Page() {
             >
               Shop Now
             </Link>
-          </div>
-          <div className='border relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] mx-auto lg:ml-0 lg:mr-0 rounded-full overflow-hidden'>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'anticipate' }}
+            viewport={{ once: true }}
+            className='border relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] mx-auto lg:ml-0 lg:mr-0 rounded-full overflow-hidden'
+          >
             <Image
               src={'/images/herobanner3.jpeg'}
               alt={'vegetables'}
               fill
               className='object-cover'
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 

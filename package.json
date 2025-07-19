@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/core": "^0.34.2",
+    "framer-motion": "^12.23.6",
     "next": "15.3.4",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
