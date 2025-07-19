@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+
 
 interface ProductCardProps {
   id: string;
@@ -31,16 +31,9 @@ export function ProductCard({
   const handleDecrement = function () {
     setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
   };
-  const item = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
 
   return (
-    <motion.div
-      variants={item}
-      className='bg-white rounded-2xl shadow-md p-4 transition hover:shadow-lg group cursor-pointer'
-    >
+    <div className='bg-white rounded-2xl shadow-md p-4 transition hover:shadow-lg group cursor-pointer'>
       <div
         className='w-full h-[300px] relative overflow-hidden rounded-2xl'
         onClick={() => setIsOverLayed(!isOverLayed)}
@@ -134,7 +127,7 @@ export function ProductCard({
           View Product
         </Link>
       </div> */}
-    </motion.div>
+    </div>
   );
 }
 
