@@ -6,6 +6,7 @@ import { useCart } from '@/app/_context/CartContext';
 import { useEffect, useRef, useState } from 'react';
 import Button from '../_components/Button';
 import { HiOutlineSearch } from 'react-icons/hi';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Page() {
   const { addToCart } = useCart();
@@ -26,6 +27,17 @@ export default function Page() {
     product.name.toLowerCase().includes(userSearch.toLowerCase()),
   );
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
   return (
     <main className='min-h-screen bg-gray-50 py-12 px-12'>
       <header
@@ -71,18 +83,35 @@ export default function Page() {
         </div>
       </header>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl lg:w-full lg:max-w-full'>
-        {productDisplay.slice(0, displaySize).map((p, i) => (
-          <ProductCard
-            key={i}
-            id={p.id}
-            name={p.name}
-            price={p.price}
-            image={p.image}
-            onAddToCart={() => addToCart(p)}
-          />
-        ))}
-      </div>
+      <motion.div
+        variants={container}
+        initial='hidden'
+        whileInView='show'
+        viewport={{ once: true }}
+        className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl lg:w-full lg:max-w-full'
+        // key={isFullyDisplayed ? 'expanded' : 'collapsed'}
+      >
+        <AnimatePresence>
+          {productDisplay.slice(0, displaySize).map((p, i) => (
+            <motion.div
+              key={p.id + i}
+              variants={item}
+              initial='hidden'
+              animate='show'
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <ProductCard
+                key={i}
+                id={p.id}
+                name={p.name}
+                price={p.price}
+                image={p.image}
+                onAddToCart={() => addToCart(p)}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
       <div className='w-full flex justify-center mt-5'>
         {userSearch.length === 0 && (
           <Button onClick={() => setIsFullyDisplayed(!isFullyDisplayed)}>

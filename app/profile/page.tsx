@@ -4,13 +4,19 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Button from '../_components/Button';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function Page() {
   const { data: session } = useSession();
   const { push } = useRouter();
   return (
     <main className='min-h-screen flex flex-col justify-center items-center bg-gray-50 p-6'>
-      <div className='max-w-md w-full bg-white p-8 rounded-2xl shadow-xl text-center'>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className='max-w-md w-full bg-white p-8 rounded-2xl shadow-xl text-center'
+      >
         <Image
           src={!session ? '/images/logo.png' : (session.user?.image as string)}
           alt='Logo'
@@ -37,7 +43,7 @@ export default function Page() {
         >
           {!session ? 'Go To Login' : 'Sign Out'}
         </Button>
-      </div>
+      </motion.div>
     </main>
   );
 }
