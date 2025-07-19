@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { IoCartOutline } from 'react-icons/io5';
 import Button from '@/app/_components/Button';
+import { motion } from 'framer-motion';
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
@@ -25,12 +26,24 @@ export default function ProductDetails() {
 
   return (
     <main className='min-h-screen bg-gray-50 py-10 px-4 sm:px-6'>
-      <div className='w-full flex justify-end'>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        className='w-full flex justify-end'
+      >
         <Button width='w-full sm:w-auto mb-2' onClick={back}>
           &larr; Back
         </Button>
-      </div>
-      <div className='max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl p-6 md:p-10'>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        className='max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl p-6 md:p-10'
+      >
         <div className='grid md:grid-cols-2 gap-8'>
           {/* Product Image */}
           <div className='relative w-full h-72 md:h-[420px] rounded-2xl overflow-hidden'>
@@ -120,7 +133,7 @@ export default function ProductDetails() {
             <p className='text-sm text-gray-500'>100% organic farm produce</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 }
